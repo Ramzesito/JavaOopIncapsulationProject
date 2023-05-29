@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 public class RadioTest {
 
+    // tests for volume
     @Test
     public void shouldIncreaseVolumeLevel() {
         Radio testRadio = new Radio();
@@ -39,6 +40,14 @@ public class RadioTest {
         Assertions.assertEquals(expected, testRadio.getCurrentVolume());
     }
 
+    // tests for station
+    @Test
+    public void shouldSetValidStation() {
+        Radio testRadio = new Radio();
+        testRadio.setStation(6);
+        int expected = 6;
+        Assertions.assertEquals(expected, testRadio.getCurrentStation());
+    }
     @Test
     public void shouldSetFirstValidStation() {
         Radio testRadio = new Radio();
@@ -65,6 +74,36 @@ public class RadioTest {
         Radio testRadio = new Radio();
         testRadio.setStation(-1);
         int expected = 0;
+        Assertions.assertEquals(expected, testRadio.getCurrentStation());
+    }
+    @Test
+    public void shouldSetNextStation() {
+        Radio testRadio = new Radio();
+        testRadio.nextStation();
+        int expected = 1;
+        Assertions.assertEquals(expected, testRadio.getCurrentStation());
+    }
+    @Test
+    public void shouldSetPrevStation() {
+        Radio testRadio = new Radio();
+        testRadio.setStation(5);
+        testRadio.prevStation();
+        int expected = 4;
+        Assertions.assertEquals(expected, testRadio.getCurrentStation());
+    }
+    @Test
+    public void shouldSetNextStationMinAfterMax() {
+        Radio testRadio = new Radio();
+        testRadio.setStation(9);
+        testRadio.nextStation();
+        int expected = 0;
+        Assertions.assertEquals(expected, testRadio.getCurrentStation());
+    }
+    @Test
+    public void shouldSetNextStationMaxBeforeMin() {
+        Radio testRadio = new Radio();
+        testRadio.prevStation();
+        int expected = 9;
         Assertions.assertEquals(expected, testRadio.getCurrentStation());
     }
 }
