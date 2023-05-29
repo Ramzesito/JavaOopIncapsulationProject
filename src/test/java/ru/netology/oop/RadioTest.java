@@ -13,6 +13,7 @@ public class RadioTest {
         int expected = 1;
         Assertions.assertEquals(expected, testRadio.getCurrentVolume());
     }
+
     @Test
     public void shouldDecreaseVolumeLevel() {
         Radio testRadio = new Radio();
@@ -23,6 +24,7 @@ public class RadioTest {
         int expected = 2;
         Assertions.assertEquals(expected, testRadio.getCurrentVolume());
     }
+
     @Test
     public void shouldNotDecreaseVolumeLevelIfMin() {
         Radio testRadio = new Radio();
@@ -30,6 +32,7 @@ public class RadioTest {
         int expected = 0;
         Assertions.assertEquals(expected, testRadio.getCurrentVolume());
     }
+
     @Test
     public void shouldNotIncreaseVolumeLevelIfMax() {
         Radio testRadio = new Radio();
@@ -48,6 +51,7 @@ public class RadioTest {
         int expected = 6;
         Assertions.assertEquals(expected, testRadio.getCurrentStation());
     }
+
     @Test
     public void shouldSetFirstValidStation() {
         Radio testRadio = new Radio();
@@ -55,6 +59,7 @@ public class RadioTest {
         int expected = 0;
         Assertions.assertEquals(expected, testRadio.getCurrentStation());
     }
+
     @Test
     public void shouldSetLastValidStation() {
         Radio testRadio = new Radio();
@@ -62,6 +67,7 @@ public class RadioTest {
         int expected = 9;
         Assertions.assertEquals(expected, testRadio.getCurrentStation());
     }
+
     @Test
     public void shouldNotSetInvalidStationAfterMax() {
         Radio testRadio = new Radio();
@@ -69,6 +75,7 @@ public class RadioTest {
         int expected = 0;
         Assertions.assertEquals(expected, testRadio.getCurrentStation());
     }
+
     @Test
     public void shouldNotSetInvalidStationBeforeMin() {
         Radio testRadio = new Radio();
@@ -76,6 +83,7 @@ public class RadioTest {
         int expected = 0;
         Assertions.assertEquals(expected, testRadio.getCurrentStation());
     }
+
     @Test
     public void shouldSetNextStation() {
         Radio testRadio = new Radio();
@@ -83,6 +91,7 @@ public class RadioTest {
         int expected = 1;
         Assertions.assertEquals(expected, testRadio.getCurrentStation());
     }
+
     @Test
     public void shouldSetPrevStation() {
         Radio testRadio = new Radio();
@@ -91,6 +100,7 @@ public class RadioTest {
         int expected = 4;
         Assertions.assertEquals(expected, testRadio.getCurrentStation());
     }
+
     @Test
     public void shouldSetNextStationMinAfterMax() {
         Radio testRadio = new Radio();
@@ -99,6 +109,7 @@ public class RadioTest {
         int expected = 0;
         Assertions.assertEquals(expected, testRadio.getCurrentStation());
     }
+
     @Test
     public void shouldSetNextStationMaxBeforeMin() {
         Radio testRadio = new Radio();
