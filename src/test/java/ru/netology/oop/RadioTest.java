@@ -5,6 +5,18 @@ import org.junit.jupiter.api.Test;
 
 public class RadioTest {
 
+    // tests for radio initialization
+    @Test
+    public void createRadioObjectWithoutParameters() {
+        Radio testRadio = new Radio();
+        Assertions.assertEquals(10, testRadio.getStationQty());
+    }
+    @Test
+    public void createRadioObjectWithParameters() {
+        Radio testRadio = new Radio(15);
+        Assertions.assertEquals(15, testRadio.getStationQty());
+    }
+
     // tests for volume
     @Test
     public void shouldIncreaseVolumeLevel() {
@@ -51,10 +63,24 @@ public class RadioTest {
         int expected = 6;
         Assertions.assertEquals(expected, testRadio.getCurrentStation());
     }
+    @Test
+    public void shouldSetValidStationWithParameter() {
+        Radio testRadio = new Radio(29);
+        testRadio.setStation(6);
+        int expected = 6;
+        Assertions.assertEquals(expected, testRadio.getCurrentStation());
+    }
 
     @Test
     public void shouldSetFirstValidStation() {
         Radio testRadio = new Radio();
+        testRadio.setStation(0);
+        int expected = 0;
+        Assertions.assertEquals(expected, testRadio.getCurrentStation());
+    }
+    @Test
+    public void shouldSetFirstValidStationWithParameter() {
+        Radio testRadio = new Radio(33);
         testRadio.setStation(0);
         int expected = 0;
         Assertions.assertEquals(expected, testRadio.getCurrentStation());
@@ -67,11 +93,25 @@ public class RadioTest {
         int expected = 9;
         Assertions.assertEquals(expected, testRadio.getCurrentStation());
     }
+    @Test
+    public void shouldSetLastValidStationWithParameter() {
+        Radio testRadio = new Radio(44);
+        testRadio.setStation(43);
+        int expected = 43;
+        Assertions.assertEquals(expected, testRadio.getCurrentStation());
+    }
 
     @Test
     public void shouldNotSetInvalidStationAfterMax() {
         Radio testRadio = new Radio();
         testRadio.setStation(10);
+        int expected = 0;
+        Assertions.assertEquals(expected, testRadio.getCurrentStation());
+    }
+    @Test
+    public void shouldNotSetInvalidStationAfterMaxWithParameter() {
+        Radio testRadio = new Radio(55);
+        testRadio.setStation(55);
         int expected = 0;
         Assertions.assertEquals(expected, testRadio.getCurrentStation());
     }
@@ -83,10 +123,24 @@ public class RadioTest {
         int expected = 0;
         Assertions.assertEquals(expected, testRadio.getCurrentStation());
     }
+    @Test
+    public void shouldNotSetInvalidStationBeforeMinWithParameter() {
+        Radio testRadio = new Radio(22);
+        testRadio.setStation(-1);
+        int expected = 0;
+        Assertions.assertEquals(expected, testRadio.getCurrentStation());
+    }
 
     @Test
     public void shouldSetNextStation() {
         Radio testRadio = new Radio();
+        testRadio.nextStation();
+        int expected = 1;
+        Assertions.assertEquals(expected, testRadio.getCurrentStation());
+    }
+    @Test
+    public void shouldSetNextStationWithParameter() {
+        Radio testRadio = new Radio(15);
         testRadio.nextStation();
         int expected = 1;
         Assertions.assertEquals(expected, testRadio.getCurrentStation());
@@ -100,11 +154,27 @@ public class RadioTest {
         int expected = 4;
         Assertions.assertEquals(expected, testRadio.getCurrentStation());
     }
+    @Test
+    public void shouldSetPrevStationWithParameter() {
+        Radio testRadio = new Radio(55);
+        testRadio.setStation(44);
+        testRadio.prevStation();
+        int expected = 43;
+        Assertions.assertEquals(expected, testRadio.getCurrentStation());
+    }
 
     @Test
     public void shouldSetNextStationMinAfterMax() {
         Radio testRadio = new Radio();
         testRadio.setStation(9);
+        testRadio.nextStation();
+        int expected = 0;
+        Assertions.assertEquals(expected, testRadio.getCurrentStation());
+    }
+    @Test
+    public void shouldSetNextStationMinAfterMaxWithParameter() {
+        Radio testRadio = new Radio(66);
+        testRadio.setStation(65);
         testRadio.nextStation();
         int expected = 0;
         Assertions.assertEquals(expected, testRadio.getCurrentStation());
@@ -115,6 +185,13 @@ public class RadioTest {
         Radio testRadio = new Radio();
         testRadio.prevStation();
         int expected = 9;
+        Assertions.assertEquals(expected, testRadio.getCurrentStation());
+    }
+    @Test
+    public void shouldSetNextStationMaxBeforeMinWithParameter() {
+        Radio testRadio = new Radio(33);
+        testRadio.prevStation();
+        int expected = 32;
         Assertions.assertEquals(expected, testRadio.getCurrentStation());
     }
 }

@@ -2,17 +2,29 @@ package ru.netology.oop;
 
 public class Radio {
     private int currentVolume = 0; // from 0 to 100
-    private int currentStation = 0; // from 0 to 9
+    private int currentStation = 0; // from 0 to stationQty-1
     private int stationQty = 10; // Station quantity by default
 
+    public Radio() {
+        currentVolume = 0;
+        currentStation = 0;
+        stationQty = 10;
+    }
+
     public Radio(int stationQty) {
+        currentVolume = 0;
+        currentStation = 0;
         this.stationQty = stationQty;
     }
 
     public void setStation(int station) {
-        if ((station >= 0) & (station <= 9)) {
+        if ((station >= 0) & (station < stationQty)) {
             currentStation = station;
         }
+    }
+
+    public int getStationQty() {
+        return stationQty;
     }
 
     public int getCurrentStation() {
@@ -36,7 +48,7 @@ public class Radio {
     }
 
     public void nextStation() {
-        if (currentStation < 9) {
+        if (currentStation < stationQty-1) {
             currentStation++;
         } else {
             currentStation = 0;
@@ -47,7 +59,7 @@ public class Radio {
         if (currentStation > 0) {
             currentStation--;
         } else {
-            currentStation = 9;
+            currentStation = stationQty - 1;
         }
     }
 
