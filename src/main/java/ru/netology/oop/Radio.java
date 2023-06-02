@@ -6,14 +6,8 @@ public class Radio {
     private int stationQty = 10; // Station quantity by default
 
     public Radio() {
-        currentVolume = 0;
-        currentStation = 0;
-        stationQty = 10;
     }
-
     public Radio(int stationQty) {
-        currentVolume = 0;
-        currentStation = 0;
         this.stationQty = stationQty;
     }
 
