@@ -3,6 +3,11 @@ package ru.netology.oop;
 public class Radio {
     private int currentVolume = 0; // from 0 to 100
     private int currentStation = 0; // from 0 to 9
+    private int stationQty = 10; // Station quantity by default
+
+    public Radio(int stationQty) {
+        this.stationQty = stationQty;
+    }
 
     public void setStation(int station) {
         if ((station >= 0) & (station <= 9)) {
